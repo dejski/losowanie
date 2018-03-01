@@ -168,7 +168,7 @@
                             if (liczniTAB % 2 == 0) {
                     %>
                 <td class="tg-j2zy">&nbsp;&nbsp;&nbsp;&nbsp;<%= zawodnicy.getString("name")%>&nbsp;</td>
-                <td> <input type="checkbox" style="width: 70px;height: 70px;" name="zawodnik" value=<%= zawodnicy.getString("name")%>
+                <td><input type="checkbox" style="width: 70px;height: 70px;" name="zawodnik" value=<%= zawodnicy.getString("name")%>
                              <% if (zawodnicy.getInt("obecny") == 1) {
                              %>checked<%}%> ></td></tr>
                     <%
@@ -183,8 +183,6 @@
                         <%}%>
                     </tbody>
             </table>
-
         </form>
-
     </body>
 </html>
