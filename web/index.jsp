@@ -16,7 +16,8 @@
             .tg td{font-family:Arial, sans-serif;font-size:55px;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aaa;color:#333;background-color:#fff;}
             .tg th{font-family:Arial, sans-serif;font-size:45px;font-weight:normal;padding:10px 5px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:#aaa;color:#fff;background-color:#f38630;}
             .tg .tg-j2zy{background-color:#FCFBE3;vertical-align:central}
-            .tg .tg-9hbo{font-weight:bold;vertical-align:top}
+            .tg .tg-2{background-color:blue;vertical-align:central}
+            .tg .tg-9hbo{font-weight:bold;vertical-align:top;background-color: orange}
             input[type="text"] {font-size:30px}
         </style>
     </head>
@@ -24,7 +25,7 @@
         <%!
             public class Druzyna {
 
-                String URL = "jdbc:mysql://localhost:3306/sakila";
+                String URL = "jdbc:mysql://dejski.nazwa.pl:3306/sakila";
                 String USERNAME = "root";
 //                String PASSWORD = "admin";
 //                String URL = "jdbc:mysql://localhost:3306/pilkajav_sakila";
@@ -61,6 +62,18 @@
                         e.printStackTrace();
                     }
                     return resultSet;
+                }
+
+                public String getObrazek(String kto) {
+                    if (kto.equals("Bogdan") || kto.equals("Dejski") || kto.equals("Piotr") || kto.equals("Leszek") || kto.equals("Kajtek") || kto.equals("Marcin")
+                            || kto.equals("_Dlugi") || kto.equals("Jurek") || kto.equals("_Tomek_R") || kto.equals("Andrzej") || kto.equals("Lukasz")
+                            || kto.equals("Andrzej") || kto.equals("Pawel") || kto.equals("Slawek") || kto.equals("Staszek") || kto.equals("Darek")
+                            || kto.equals("Tuniek")) {
+                        return "<img src=\"img/" + kto + ".jpg\" />";
+                    } else {
+                        return kto;
+                    }
+
                 }
 
                 public int updateZawodnika(String name, int obecny) {
@@ -129,19 +142,19 @@
                 <!--<tr>                    <th class="tg-9hbo" colspan="2">Różnica: <%=sumy.get(2)%></th>                </tr>-->
                 <tr>
                     <th class="tg-9hbo">&nbsp;&nbsp;&nbsp;Patałachy (<%=sumy.get(0)%>)&nbsp;&nbsp;&nbsp;</th>
-                    <th class="tg-9hbo">&nbsp;&nbsp;&nbsp;Łamagi (<%=sumy.get(1)%>)&nbsp;&nbsp;&nbsp;</th>
+                    <th class="tg-2">&nbsp;&nbsp;&nbsp;Łamagi (<%=sumy.get(1)%>)&nbsp;&nbsp;&nbsp;</th>
                 </tr>
                 <tr>
                     <td class="tg-9hbo"><%
                         for (Iterator<String> iterator = zespol1.iterator(); iterator.hasNext();) {
                             String next = iterator.next();
-                        %><%=next%><br><%
+                        %><%= druzyna.getObrazek(next)%><%
                             }
                         %></td>
-                    <td class="tg-9hbo"><%
+                    <td class="tg-2"><%
                         for (Iterator<String> iterator = zespol2.iterator(); iterator.hasNext();) {
                             String next = iterator.next();
-                        %><%=next%><br><%
+                        %><%= druzyna.getObrazek(next)%><%
                             }
                         %></td>
                 </tr>
@@ -162,23 +175,22 @@
             <table border="0"  class="tg">
                 <tbody>
                     <tr><td colspan="4" style="text-align:center;"><input type="submit" value="      Losuj!      " name="losuj" style="font-size:50px;font-weight: bold;background-color: #f38630;height: 150px" /><br></td></tr>
-                    <%                    int liczniTAB = 0;
-                        while (zawodnicy.next()) {
-                            liczniTAB++;
-                            if (liczniTAB % 2 == 0) {
-                    %>
-                <td class="tg-j2zy">&nbsp;&nbsp;&nbsp;&nbsp;<%= zawodnicy.getString("name")%>&nbsp;</td>
-                <td><input type="checkbox" style="width: 70px;height: 70px;" name="zawodnik" value=<%= zawodnicy.getString("name")%>
-                             <% if (zawodnicy.getInt("obecny") == 1) {
-                             %>checked<%}%> ></td></tr>
+                            <%                    int liczniTAB = 0;
+                                while (zawodnicy.next()) {
+                                    liczniTAB++;
+                                    if (liczniTAB % 2 == 0) {
+                            %>
+                <td class="tg-j2zy"><%= druzyna.getObrazek(zawodnicy.getString("name"))%></td>
+                <td> <input type="checkbox" style="width: 70px;height: 70px;" name="zawodnik" value=<%= zawodnicy.getString("name")%>
+                            <% if (zawodnicy.getInt("obecny") == 1) {
+                            %>checked<%}%> ></td></tr>
                     <%
                     } else {
                     %>
-                <tr><td class="tg-j2zy">&nbsp;&nbsp;<%= zawodnicy.getString("name")%>&nbsp;</td>
-                    <td><input type="checkbox" style="width: 70px;height: 70px;" name="zawodnik" value=<%= zawodnicy.getString("name")%> 
-                                 <% if (zawodnicy.getInt("obecny") == 1) {
-                                     %>checked<%}%> ></td>
-                
+                <tr><td class="tg-j2zy"><%= druzyna.getObrazek(zawodnicy.getString("name"))%></td>
+                    <td> <input type="checkbox" style="width: 70px;height: 70px;" name="zawodnik" value=<%= zawodnicy.getString("name")%> 
+                                <% if (zawodnicy.getInt("obecny") == 1) {
+                                %>checked<%}%> ></td>
                         <%}%>
                         <%}%>
                     </tbody>

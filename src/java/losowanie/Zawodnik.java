@@ -22,7 +22,7 @@ public class Zawodnik {
         double liczba = randomGenerator.nextDouble();
         //double liczba2 = 0.8 + 0.1 * forma;
 
-        double wspoczynnik = (100 + (100 * liczba) / 6);
+        double wspoczynnik = (100 + (100 * liczba) / 8);
         this.ranking = (kondycja + technika + taktyka) * wspoczynnik;
 
         //System.out.println("forma " + forma + " " + " wspoczynnik " +  wspoczynnik + " " + name + " liczba2 " + liczba2 + " " + this.ranking);
