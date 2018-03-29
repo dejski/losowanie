@@ -112,13 +112,12 @@ public class Algorytm {
             suma1 += unsortMap.get(listaPosortowana.get(listaPosortowana.size() - 1));
             listaPosortowana.remove(listaPosortowana.size() - 1);
             while (listaPosortowana.size() > 0) {
-                druzyna1.add(listaPosortowana.get(0));
-                suma1 += unsortMap.get(listaPosortowana.get(0));
-                listaPosortowana.remove(0);
                 druzyna2.add(listaPosortowana.get(0));
                 suma2 += unsortMap.get(listaPosortowana.get(0));
-                //System.out.println("listaPosortowana.get(0): " + listaPosortowana.get(0));
-                //System.out.println(unsortMap.get(listaPosortowana.get(0)));
+                listaPosortowana.remove(0);
+
+                druzyna1.add(listaPosortowana.get(0));
+                suma1 += unsortMap.get(listaPosortowana.get(0));
                 listaPosortowana.remove(0);
             }
         }
