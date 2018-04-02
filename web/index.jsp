@@ -68,8 +68,12 @@
                     if (kto.equals("Bogdan") || kto.equals("Dejski") || kto.equals("Piotr") || kto.equals("Leszek") || kto.equals("Kajtek") || kto.equals("Marcin")
                             || kto.equals("_Dlugi") || kto.equals("Jurek") || kto.equals("_Tomek_R") || kto.equals("Andrzej") || kto.equals("Lukasz")
                             || kto.equals("Andrzej") || kto.equals("Pawel") || kto.equals("Slawek") || kto.equals("Staszek") || kto.equals("Darek")
-                            || kto.equals("Tuniek")) {
-                        return "<img src=\"img/" + kto + ".jpg\" />";
+                            || kto.equals("Tuniek") || kto.equals("_TomekK") || kto.equals("__GOSC")) {
+                        if (kto.equals("Bogdan")) {
+                            return "<img src=\"img/" + kto + ".gif\" />";
+                        } else {
+                            return "<img src=\"img/" + kto + ".jpg\" />";
+                        }
                     } else {
                         return kto;
                     }
