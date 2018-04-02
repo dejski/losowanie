@@ -115,6 +115,7 @@ public class Algorytm {
                 druzyna2.add(listaPosortowana.get(0));
                 suma2 += unsortMap.get(listaPosortowana.get(0));
                 listaPosortowana.remove(0);
+
                 
                 druzyna1.add(listaPosortowana.get(0));
                 suma1 += unsortMap.get(listaPosortowana.get(0));
